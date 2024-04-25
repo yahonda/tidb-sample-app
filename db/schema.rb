@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_25_045159) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_25_061203) do
+  create_table "authors", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.string "title"
+    t.bigint "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_books_on_author_id"
+  end
+
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_bin", options: "ENGINE=InnoDB /*T![auto_id_cache] AUTO_ID_CACHE=1 */", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -24,4 +38,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_25_045159) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "books", "authors"
 end
