@@ -17,7 +17,7 @@ default: &default
   host: 127.0.0.1
   port: 4000
   password:
-  foreign_key: false
+  foreign_keys: false
 
 development:
   <<: *default
