@@ -40,4 +40,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_25_063728) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "books", "authors"
 end
